@@ -14,7 +14,7 @@ export class TriggerController {
   @Post()
   trigger(@Body() body: TriggerDto) {
     this.validateKey(body.key);
-    this.triggerService.trigger(body.deviceName, body.durationInMinutes);
+    this.triggerService.trigger(body.deviceName, body.duration, body.unit);
     return true;
   }
 

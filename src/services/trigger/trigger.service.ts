@@ -21,12 +21,13 @@ export class TriggerService {
     this.onEvent = this.configService.get<string>('IFTTT_EVENT_ON_SUFFIX') || '_on';
   }
 
-  public trigger(deviceName: string, durationInMinutes: number) {
+  public trigger(deviceName: string, duration: number, unit: string) {
+    const multiplier = unit.includes('second') ? 1000 : 60000;
     const timestamp = new Date();
     const device: Device = {
       name: deviceName,
       added: timestamp,
-      expiry: new Date(timestamp.getTime() + durationInMinutes * 60000),
+      expiry: new Date(timestamp.getTime() + duration * multiplier),
     }
     this.deviceService.add(device)
     this.iftttTrigger(`${device.name}${this.onEvent}`)
