@@ -1,4 +1,4 @@
-import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
+import { Controller, Post, Body, HttpException, HttpStatus } from '@nestjs/common';
 import { TriggerDto } from 'src/validation';
 import { ConfigService } from '@nestjs/config';
 import { TriggerService } from 'src/services/trigger';
