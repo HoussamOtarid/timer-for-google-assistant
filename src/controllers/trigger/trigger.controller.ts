@@ -20,7 +20,10 @@ export class TriggerController {
 
   private validateKey(key: string) {
     if (key !== this.configService.get<string>('SECURITY_KEY')) {
-      throw new BadRequestException();
+      throw new HttpException({
+        status: HttpStatus.FORBIDDEN,
+        error: this.configService.get<string>('SECURITY_KEY'),
+      }, HttpStatus.FORBIDDEN);
     }
   }
 
