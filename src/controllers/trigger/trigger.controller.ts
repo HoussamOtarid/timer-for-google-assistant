@@ -13,7 +13,7 @@ export class TriggerController {
 
   @Post()
   trigger(@Body() body: TriggerDto) {
-    this.validateKey(body.key);
+    //this.validateKey(body.key);
     this.triggerService.trigger(body.deviceName, body.durationInMinutes);
     return true;
   }
